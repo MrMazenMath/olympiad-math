@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية أولمبياد الرياضيات العربية</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Tahoma', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        header p {
+            color: #666;
+            font-size: 1.2em;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h2 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            color: #34495e;
+            font-size: 1.5em;
+            margin: 20px 0 10px 0;
+            background: linear-gradient(90deg, #3498db, #2980b9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+        
+        .week-schedule {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            border-right: 5px solid #3498db;
+        }
+        
+        .problem-box {
+            background: #e3f2fd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            border-right: 4px solid #2196f3;
+        }
+        
+        .tip {
+            background: #fff3cd;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            border-right: 4px solid #ffc107;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        .resource-link {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 20px;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .resource-link:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+        
+        .contact-info {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 80%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏆 أكاديمية أولمبياد الرياضيات العربية</h1>
+            <p>طريقك نحو التميز في الرياضيات والمنافسة العالمية</p>
+        </header>
+        
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="showSection('home')">🏠 الرئيسية</button>
+            <button class="nav-btn" onclick="showSection('schedule')">📅 الجدول الزمني</button>
+            <button class="nav-btn" onclick="showSection('problems')">🧮 بنك المسائل</button>
+            <button class="nav-btn" onclick="showSection('resources')">📚 الموارد</button>
+            <button class="nav-btn" onclick="showSection('contact')">📞 التواصل</button>
+        </div>
+        
+        <!-- الصفحة الرئيسية -->
+        <div id="home" class="section active">
+            <h2>مرحباً بك في أكاديمية أولمبياد الرياضيات</h2>
+            
+            <div class="highlight">
+                هدفنا: إعداد جيل متميز من الطلاب العرب للمشاركة في الأولمبياد العالمية للرياضيات
+            </div>
+            
+            <h3>🎯 ما نقدمه لك:</h3>
+            <div class="tip">
+                <strong>✅ تدريب متدرج ومنظم</strong> - من الأساسيات حتى المستوى العالمي<br>
+                <strong>✅ مسائل متنوعة</strong> - من جميع فروع الرياضيات الأولمبية<br>
+                <strong>✅ جدول زمني محكم</strong> - خطة 9 أشهر للوصول للهدف<br>
+                <strong>✅ موارد شاملة</strong> - كتب ومواقع ومراجع متخصصة
+            </div>
+            
+            <h3>📈 مراحل التدريب:</h3>
+            <div class="week-schedule">
+                <strong>المرحلة الأولى (3-4 أشهر):</strong> التأسيس وتقوية الأساسيات
+            </div>
+            <div class="week-schedule">
+                <strong>المرحلة الثانية (4-5 أشهر):</strong> التطوير والتقنيات المتقدمة
+            </div>
+            <div class="week-schedule">
+                <strong>المرحلة الثالثة (2-3 أشهر):</strong> الإتقان والاستعداد النهائي
+            </div>
+        </div>
+        
+        <!-- الجدول الزمني -->
+        <div id="schedule" class="section">
+            <h2>📅 الجدول الزمني للتدريب</h2>
+            
+            <h3>المرحلة الأولى: التأسيس (3-4 أشهر)</h3>
+            
+            <div class="week-schedule">
+                <strong>الشهر الأول - الأساسيات:</strong><br>
+                • الأسبوع 1-2: الجبر الأساسي + الهندسة الإقليدية<br>
+                • الأسبوع 3-4: نظرية الأعداد + التوافقيات الأساسية
+            </div>
+            
+            <div class="week-schedule">
+                <strong>الشهر الثاني - التعمق:</strong><br>
+                • الأسبوع 1-2: الجبر المتقدم + الهندسة التحليلية<br>
+                • الأسبوع 3-4: نظرية الأعداد المتوسطة + هندسة متقدمة
+            </div>
+            
+            <h3>المرحلة الثانية: التطوير (4-5 أشهر)</h3>
+            
+            <div class="week-schedule">
+                <strong>التقنيات المتقدمة:</strong><br>
+                • هندسة متقدمة (نظرية مينلوس، سيفا)<br>
+                • توافقيات متقدمة (مبدأ الحمام)<br>
+                • نظرية الأعداد المتقدمة<br>
+                • تقنيات الجبر والمتباينات
+            </div>
+            
+            <h3>المرحلة الثالثة: الإتقان (2-3 أشهر)</h3>
+            
+            <div class="week-schedule">
+                <strong>التدريب المكثف:</strong><br>
+                • حل مسائل IMO من السنوات السابقة<br>
+                • امتحانات محاكاة كاملة<br>
+                • تحسين تقنيات الكتابة والعرض<br>
+                • تدريب نفسي وإدارة التوتر
+            </div>
+            
+            <div class="tip">
+                <strong>💡 نصيحة:</strong> التزم بالجدول الزمني واحتفظ بدفتر أخطاء للتعلم من التجارب
+            </div>
+        </div>
+        
+        <!-- بنك المسائل -->
+        <div id="problems" class="section">
+            <h2>🧮 بنك المسائل</h2>
+            
+            <h3>مسائل المستوى المبتدئ</h3>
+            <div class="problem-box">
+                <strong>مسألة 1:</strong> أثبت أن مجموع أول n عدد طبيعي يساوي n(n+1)/2
+            </div>
+            
+            <div class="problem-box">
+                <strong>مسألة 2:</strong> في مثلث ABC، إذا كان AB = AC، أثبت أن الزاويتين B و C متساويتان
+            </div>
+            
+            <h3>مسائل المستوى المتوسط</h3>
+            <div class="problem-box">
+                <strong>مسألة 3:</strong> أوجد جميع الأعداد الصحيحة الموجبة n بحيث يكون n² + 19n + 99 عدداً أولياً
+            </div>
+            
+            <div class="problem-box">
+                <strong>مسألة 4:</strong> في دائرة، إذا كان AB و CD وتران متقاطعان في النقطة P، أثبت أن PA × PB = PC × PD
+            </div>
+            
+            <h3>مسائل المستوى المتقدم (IMO Style)</h3>
+            <div class="problem-box">
+                <strong>مسألة 5:</strong> أوجد جميع الدوال f: ℕ → ℕ بحيث f(m+n) = f(m) + f(n) لكل m,n في ℕ
+            </div>
+            
+            <div class="tip">
+                <strong>🎯 استراتيجية الحل:</strong><br>
+                1. اقرأ المسألة بتأنٍ<br>
+                2. حدد المطلوب بوضوح<br>
+                3. ارسم مخططاً إذا أمكن<br>
+                4. ابحث عن أنماط أو حالات خاصة<br>
+                5. اكتب الحل بشكل منظم ومنطقي
+            </div>
+        </div>
+        
+        <!-- الموارد -->
+        <div id="resources" class="section">
+            <h2>📚 الموارد والمراجع</h2>
+            
+            <h3>كتب أساسية</h3>
+            <div class="tip">
+                <strong>📖 كتب باللغة العربية:</strong><br>
+                • الرياضيات الأولمبية - د. محمد الخطيب<br>
+                • نظرية الأعداد للمتفوقين - د. أحمد سالم<br>
+                • الهندسة الأولمبية - د. فاروق الباز
+            </div>
+            
+            <h3>مواقع مفيدة</h3>
+            <a href="https://artofproblemsolving.com" class="resource-link" target="_blank">Art of Problem Solving</a>
+            <a href="https://www.imo-official.org" class="resource-link" target="_blank">IMO Official</a>
+            <a href="https://www.cut-the-knot.org" class="resource-link" target="_blank">Cut the Knot</a>
+            
+            <h3>أرشيف المسابقات</h3>
+            <div class="week-schedule">
+                <strong>🏆 مسابقات هامة:</strong><br>
+                • أرشيف IMO (1959-2023)<br>
+                • أولمبياد البلقان للرياضيات<br>
+                • المسابقة العربية للرياضيات<br>
+                • أولمبياد إيران وروسيا
+            </div>
+            
+            <h3>أدوات مساعدة</h3>
+            <div class="tip">
+                <strong>🛠️ برامج مفيدة:</strong><br>
+                • GeoGebra للهندسة التفاعلية<br>
+                • Wolfram Alpha للحسابات المعقدة<br>
+                • LaTeX لكتابة الرياضيات بشكل جميل
+            </div>
+        </div>
+        
+        <!-- التواصل -->
+        <div id="contact" class="section">
+            <h2>📞 التواصل معنا</h2>
+            
+            <div class="contact-info">
+                <h3>🎓 أستاذ الرياضيات</h3>
+                <p>متخصص في تدريب الأولمبياد العالمية</p>
+                
+                <div style="margin: 20px 0;">
+                    <strong>📧 البريد الإلكتروني:</strong> mathteacher@olympiad.com<br>
+                    <strong>📱 الهاتف:</strong> +XX-XXXX-XXXX<br>
+                    <strong>💬 واتساب:</strong> +XX-XXXX-XXXX
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <strong>🕒 ساعات العمل:</strong><br>
+                    السبت - الخميس: 4:00 مساءً - 9:00 مساءً<br>
+                    الجمعة: عطلة
+                </div>
+            </div>
+            
+            <div class="tip" style="margin-top: 20px;">
+                <strong>💡 للاستفسارات:</strong><br>
+                • أسئلة حول المنهج والجدول الزمني<br>
+                • طلب حلول المسائل الصعبة<br>
+                • التسجيل في دورات تدريبية خاصة<br>
+                • استشارات لتحديد مستوى الطالب
+            </div>
+            
+            <div class="highlight" style="margin-top: 20px;">
+                انضم إلينا في رحلة التميز الرياضي! 🚀
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showSection(sectionId) {
+            // إخفاء جميع الأقسام
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // إظهار القسم المحدد
+            document.getElementById(sectionId).classList.add('active');
+            
+            // تحديث لون الأزرار
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                btn.style.background = 'linear-gradient(45deg, #ff6b6b, #ee5a52)';
+            });
+            
+            // تلوين الزر النشط
+            event.target.style.background = 'linear-gradient(45deg, #28a745, #20c997)';
+        }
+        
+        // تحديد الصفحة الرئيسية كافتراضية
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('home');
+        });
+    </script>
+</body>
+</html>
